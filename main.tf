@@ -5,6 +5,13 @@ terraform {
       version = "=2.46.0"
     }
   }
+  backend "azurerm" {
+        resource_group_name  = "vshelloaz"
+        storage_account_name = "vssgac"
+        container_name       = "tfstate"
+        key                  = "texyiydbFgEk6jtYtnU91OnnjLEKVXrc2hhVszKDAzPlGDAEa4crgALqErufRL141qVfmMCy87rZG5Ggo7eJQw=="
+    }
+
 }
 
 # Configure the Microsoft Azure Provider
@@ -13,15 +20,15 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "example" {
-  name     = "helloazurevs001-tf"
+  name     = "helloazurevs002-tf"
   location = "Central US"
 }
 
 resource "azurerm_kubernetes_cluster" "example" {
-  name                = "example-aks1"
+  name                = "example-aks2"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
-  dns_prefix          = "exampleaks1"
+  dns_prefix          = "exampleaks2"
 
   default_node_pool {
     name       = "default"
@@ -44,6 +51,5 @@ output "client_certificate" {
 
 output "kube_config" {
   value = azurerm_kubernetes_cluster.example.kube_config_raw
-
   sensitive = true
 }
