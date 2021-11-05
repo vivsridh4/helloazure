@@ -26,18 +26,18 @@ resource "azurerm_resource_group" "example" {
 }
 
 resource "azurerm_kubernetes_cluster" "example" {
-  name                = "example-aks2"
+  name                = "example-aks3"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
-  dns_prefix          = "exampleaks2"
+  dns_prefix          = "exampleaks3"
 
   default_node_pool {
     name       = "default"
-    node_count = 3
+    node_count = 2
     vm_size    = "Standard_B2s"
     enable_auto_scaling = true
     max_count = 5
-    min_count = 3
+    min_count = 2
   }
 
   identity {
