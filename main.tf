@@ -9,7 +9,7 @@ terraform {
   backend "azurerm" {
         resource_group_name  = "vshelloaz"
         storage_account_name = "vssgac"
-        container_name       = "tfstate"
+        container_name       = "tfstate001"
         key                  = "terraform.tfstate"
     }
 
@@ -21,15 +21,15 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "example" {
-  name     = "helloazurevs003-tf"
+  name     = "helloazurevs004-tf"
   location = "Central US"
 }
 
 resource "azurerm_kubernetes_cluster" "example" {
-  name                = "example-aks3"
+  name                = "example-aks4"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
-  dns_prefix          = "exampleaks3"
+  dns_prefix          = "exampleaks4"
 
   default_node_pool {
     name       = "default"
