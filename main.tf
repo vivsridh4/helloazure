@@ -5,7 +5,7 @@ terraform {
       version = "=2.46.0"
     }
   }
-  backend "azurerm" {
+    backend "azurerm" {
         resource_group_name  = "vshelloaz"
         storage_account_name = "vssgac"
         container_name       = "tfstate"
