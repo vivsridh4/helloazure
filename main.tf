@@ -13,7 +13,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "helloazure-tf"
+  name     = "helloazurevs-tf"
   location = "Central US"
 }
 
